@@ -13,4 +13,15 @@ public class CityInfo {
         this.woeid = woeid;
     }
 
+    public List<WeatherInfo> getConsolidated_weather() {
+        return consolidated_weather;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getWoeid() {
+        return woeid;
+    }
 }
