@@ -20,4 +20,35 @@ public class WeatherInfo {
         this.humidity = humidity;
         this.predictability = predictability;
     }
+    public String getWeather_state_name() {
+        return weather_state_name;
+    }
+
+    public String getApplicable_date() {
+        return applicable_date;
+    }
+
+    public String getWeather_state_abbr() {
+        return weather_state_abbr;
+    }
+
+    public double getMin_temp() {
+        return min_temp;
+    }
+
+    public double getMax_temp() {
+        return max_temp;
+    }
+
+    public double getThe_temp() {
+        return the_temp;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public int getPredictability() {
+        return predictability;
+    }
 }
