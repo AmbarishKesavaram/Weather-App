@@ -19,6 +19,10 @@ public interface Api {
     @GET("615702")
     Call<CityInfo> getParisDetails();
 
+    @GET("1103816")
+    Call<CityInfo> getMelbourneDetails();
 
+    @GET("2295414")
+    Call<CityInfo> getHyderabadDetails();
 
 }
