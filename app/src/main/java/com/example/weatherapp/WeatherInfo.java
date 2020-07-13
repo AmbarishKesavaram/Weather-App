@@ -1,6 +1,9 @@
 package com.example.weatherapp;
 
-public class WeatherInfo {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class WeatherInfo implements Parcelable {
     private String weather_state_name;
     private String weather_state_abbr;
     private String applicable_date;
@@ -20,6 +23,30 @@ public class WeatherInfo {
         this.humidity = humidity;
         this.predictability = predictability;
     }
+
+    protected WeatherInfo(Parcel in) {
+        weather_state_name = in.readString();
+        weather_state_abbr = in.readString();
+        applicable_date = in.readString();
+        min_temp = in.readDouble();
+        max_temp = in.readDouble();
+        the_temp = in.readDouble();
+        humidity = in.readInt();
+        predictability = in.readInt();
+    }
+
+    public static final Creator<WeatherInfo> CREATOR = new Creator<WeatherInfo>() {
+        @Override
+        public WeatherInfo createFromParcel(Parcel in) {
+            return new WeatherInfo(in);
+        }
+
+        @Override
+        public WeatherInfo[] newArray(int size) {
+            return new WeatherInfo[size];
+        }
+    };
+
     public String getWeather_state_name() {
         return weather_state_name;
     }
@@ -50,5 +77,22 @@ public class WeatherInfo {
 
     public int getPredictability() {
         return predictability;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(weather_state_name);
+        dest.writeString(weather_state_abbr);
+        dest.writeString(applicable_date);
+        dest.writeDouble(min_temp);
+        dest.writeDouble(max_temp);
+        dest.writeDouble(the_temp);
+        dest.writeInt(humidity);
+        dest.writeInt(predictability);
     }
 }

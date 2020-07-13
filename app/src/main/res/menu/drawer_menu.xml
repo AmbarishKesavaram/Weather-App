@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item android:id="@+id/montreal_fragment"
+        android:title="MONTREAL"/>
+    <item android:id="@+id/new_york_fragment"
+        android:title="NEW YORK"/>
+    <item android:id="@+id/london_fragment"
+        android:title="LONDON"/>
+    <item android:id="@+id/paris_fragment"
+        android:title="PARIS"/>
+    <item android:id="@+id/hyderabad_fragment"
+        android:title="HYDERABAD"/>
+    <item android:id="@+id/melbourne_fragment"
+        android:title="MELBOURNE"/>
 </menu>
