@@ -23,43 +23,43 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MelbourneFragment extends Fragment {
-    TextView melbourneHeaderText, melbourneWeatherStateName, melbourneDayOfWeek, melbourneMaximumTemperature, melbourneActualTemperature, melbourneMinimumTemperature, melbourneHumidity, melbournePredictability;
+public class MontrealFragment extends Fragment {
+    TextView montrealHeaderText, montrealWeatherStateName, montrealDayOfWeek, montrealMaximumTemperature, montrealActualTemperature, montrealMinimumTemperature, montrealHumidity, montrealPredictability;
     ImageView todayWeatherIcon;
     private RecyclerView recyclerView;
     RecyclerAdaptor recyclerAdaptor;
-    CityInfo melbourne;
+    CityInfo montreal;
     FragmentTransaction fragmentTransaction;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_melbourne, container, false);
-        retroFitMelbourne();
+        View view = inflater.inflate(R.layout.fragment_montreal, container, false);
+        retroFitMontreal();
         return view;
     }
 
-    public void retroFitMelbourne() {
+    public void retroFitMontreal() {
 
         Api api = RetrofitInstance.getRetrofit().create(Api.class);
-        final Call<CityInfo> callMelbourne = api.getMelbourneDetails();
-        callMelbourne.enqueue(new Callback<CityInfo>() {
+        final Call<CityInfo> callMontreal = api.getMontrealDetails();
+        callMontreal.enqueue(new Callback<CityInfo>() {
             @Override
             public void onResponse(Call<CityInfo> call, Response<CityInfo> response) {
-                melbourne = response.body();
+                montreal = response.body();
 
-                setTextView(melbourneHeaderText, R.id.melbourneHead, melbourne.getTitle());
-                setImageView(todayWeatherIcon, R.id.melbourneWeatherIcon, melbourne.getConsolidated_weather().get(0).getWeather_state_abbr());
-                setTextView(melbourneDayOfWeek, R.id.melbourneDayOfWeek, WeatherSupport.dayOfWeek(melbourne.getConsolidated_weather().get(0).getApplicable_date()));
-                setTextView(melbourneWeatherStateName, R.id.melbourneWeatherState, melbourne.getConsolidated_weather().get(0).getWeather_state_name());
-                setTextView(melbourneMaximumTemperature, R.id.melbourneMaxTemp, WeatherSupport.convertDouble(melbourne.getConsolidated_weather().get(0).getMax_temp()));
-                setTextView(melbourneActualTemperature, R.id.melbourneActualTemp, WeatherSupport.convertDouble(melbourne.getConsolidated_weather().get(0).getThe_temp()));
-                setTextView(melbourneMinimumTemperature, R.id.melbourneMinTemp, WeatherSupport.convertDouble(melbourne.getConsolidated_weather().get(0).getMin_temp()));
-                setTextView(melbourneHumidity, R.id.melbourneHumidity, WeatherSupport.convertInt(melbourne.getConsolidated_weather().get(0).getHumidity()));
-                setTextView(melbournePredictability, R.id.melbournePredictability, WeatherSupport.convertInt(melbourne.getConsolidated_weather().get(0).getPredictability()));
+                setTextView(montrealHeaderText, R.id.montrealHead, montreal.getTitle());
+                setImageView(todayWeatherIcon, R.id.montrealWeatherIcon, montreal.getConsolidated_weather().get(0).getWeather_state_abbr());
+                setTextView(montrealDayOfWeek, R.id.montrealDayOfWeek, WeatherSupport.dayOfWeek(montreal.getConsolidated_weather().get(0).getApplicable_date()));
+                setTextView(montrealWeatherStateName, R.id.montrealWeatherState, montreal.getConsolidated_weather().get(0).getWeather_state_name());
+                setTextView(montrealMaximumTemperature, R.id.montrealMaxTemp, WeatherSupport.convertDouble(montreal.getConsolidated_weather().get(0).getMax_temp()));
+                setTextView(montrealActualTemperature, R.id.montrealActualTemp, WeatherSupport.convertDouble(montreal.getConsolidated_weather().get(0).getThe_temp()));
+                setTextView(montrealMinimumTemperature, R.id.montrealMinTemp, WeatherSupport.convertDouble(montreal.getConsolidated_weather().get(0).getMin_temp()));
+                setTextView(montrealHumidity, R.id.montrealHumidity, WeatherSupport.convertInt(montreal.getConsolidated_weather().get(0).getHumidity()));
+                setTextView(montrealPredictability, R.id.montrealPredictability, WeatherSupport.convertInt(montreal.getConsolidated_weather().get(0).getPredictability()));
 
-                generateView(melbourne.getConsolidated_weather(), getView());
+                generateView(montreal.getConsolidated_weather(), getView());
             }
 
             @Override
@@ -86,7 +86,7 @@ public class MelbourneFragment extends Fragment {
         weatherInfos.remove(0);
         recyclerAdaptor = new RecyclerAdaptor(weatherInfos, getActivity().getApplicationContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView = view.findViewById(R.id.melbourneRecyclerView);
+        recyclerView = view.findViewById(R.id.montrealRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdaptor);
         recyclerAdaptor.setOnClickListener(onClickListener);
@@ -98,8 +98,8 @@ public class MelbourneFragment extends Fragment {
             RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) v.getTag();
             int position = viewHolder.getAdapterPosition();
             Bundle b = new Bundle();
-            b.putParcelable("weather", melbourne.getConsolidated_weather().get(position));
-            b.putString("city","Melbourne");
+            b.putParcelable("weather", montreal.getConsolidated_weather().get(position));
+            b.putString("city","Montreal");
             PredictionFragment fragment = new PredictionFragment();
             fragment.setArguments(b);
 
