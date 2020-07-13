@@ -57,7 +57,46 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        item.setCheckable(true);
+        drawerLayout.closeDrawers();
+        drawerLayout.animate();
 
+        if(item.getItemId()== R.id.montreal_fragment){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,new MontrealFragment());
+            fragmentTransaction.commit();
+        }
+        else if(item.getItemId()== R.id.new_york_fragment){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,new NewYorkFragment());
+            fragmentTransaction.commit();
+        }
+        else if(item.getItemId()== R.id.london_fragment){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,new LondonFragment());
+            fragmentTransaction.commit();
+        }
+        else if(item.getItemId()== R.id.paris_fragment){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,new ParisFragment());
+            fragmentTransaction.commit();
+        }
+        else if(item.getItemId()== R.id.hyderabad_fragment){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,new HyderabadFragment());
+            fragmentTransaction.commit();
+        }
+        else if(item.getItemId()== R.id.melbourne_fragment){
+            fragmentManager = getSupportFragmentManager();
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragment_container,new MelbourneFragment());
+            fragmentTransaction.commit();
+        }
         return true;
     }
 }
