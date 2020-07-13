@@ -5,8 +5,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 public interface Api {
 
-    String BASE_URL ="https://www.metaweather.com/api/location/";
-
     @GET("3534")
     Call<CityInfo> getMontrealDetails();
 
