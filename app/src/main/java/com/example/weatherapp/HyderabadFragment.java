@@ -3,7 +3,6 @@ package com.example.weatherapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,7 +25,6 @@ import retrofit2.Response;
 public class HyderabadFragment extends Fragment {
     TextView hyderabadHeaderText, hyderabadWeatherStateName, hyderabadDayOfWeek, hyderabadMaximumTemperature, hyderabadActualTemperature, hyderabadMinimumTemperature, hyderabadHumidity, hyderabadPredictability;
     ImageView todayWeatherIcon;
-    private RecyclerView recyclerView;
     RecyclerAdaptor recyclerAdaptor;
     CityInfo hyderabad;
     FragmentTransaction fragmentTransaction;
@@ -86,7 +84,7 @@ public class HyderabadFragment extends Fragment {
         weatherInfos.remove(0);
         recyclerAdaptor = new RecyclerAdaptor(weatherInfos, getActivity().getApplicationContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.VERTICAL, false);
-        recyclerView = view.findViewById(R.id.hyderabadRecyclerView);
+        RecyclerView recyclerView = view.findViewById(R.id.hyderabadRecyclerView);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerAdaptor);
         recyclerAdaptor.setOnClickListener(onClickListener);

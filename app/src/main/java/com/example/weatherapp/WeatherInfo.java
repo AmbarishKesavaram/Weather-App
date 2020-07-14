@@ -13,17 +13,6 @@ public class WeatherInfo implements Parcelable {
     private int humidity;
     private int predictability;
 
-    public WeatherInfo(String weather_state_name, String weather_state_abbr, String applicable_date, double min_temp, double max_temp, double the_temp, int humidity, int predictability) {
-        this.weather_state_name = weather_state_name;
-        this.weather_state_abbr = weather_state_abbr;
-        this.applicable_date = applicable_date;
-        this.min_temp = min_temp;
-        this.max_temp = max_temp;
-        this.the_temp = the_temp;
-        this.humidity = humidity;
-        this.predictability = predictability;
-    }
-
     protected WeatherInfo(Parcel in) {
         weather_state_name = in.readString();
         weather_state_abbr = in.readString();

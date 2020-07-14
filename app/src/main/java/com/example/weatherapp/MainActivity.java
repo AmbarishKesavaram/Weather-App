@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -22,7 +21,6 @@ public class MainActivity extends AppCompatActivity implements  NavigationView.O
     NavigationView navigationView;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
-    NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
