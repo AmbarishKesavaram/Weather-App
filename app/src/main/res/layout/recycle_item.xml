@@ -17,13 +17,13 @@
             android:layout_weight="1"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:weightSum="4">
+            android:weightSum="4"
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:id="@+id/dayOfweek"
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
-                android:text="Wednesday, 16"
                 android:textColor="@color/colorWhite"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
@@ -35,7 +35,8 @@
                 android:layout_weight="1"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="50dp"
-                android:layout_marginStart="50dp" />
+                android:layout_marginStart="50dp"
+                android:contentDescription="@string/weather_icon" />
             <TextView
                 android:id="@+id/minTemp"
                 android:layout_width="wrap_content"
