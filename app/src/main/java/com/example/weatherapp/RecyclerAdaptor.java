@@ -41,9 +41,9 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
 
         WeatherInfo currentWeather = alWeather.get(position);
 
-        holder.maxTemp.setText(String.format("%.2f",currentWeather.getMax_temp()).trim());
-        holder.minTemp.setText(String.format("%.2f",currentWeather.getMin_temp()).trim());
-        holder.dayOfWeek.setText(dayOfWeek(currentWeather.getApplicable_date()));
+        holder.maxTemp.setText(WeatherSupport.convertDouble(currentWeather.getMax_temp()));
+        holder.minTemp.setText(WeatherSupport.convertDouble(currentWeather.getMin_temp()));
+        holder.dayOfWeek.setText(WeatherSupport.dayOfWeek(currentWeather.getApplicable_date()));
         Picasso.get().load("https://www.metaweather.com/static/img/weather/ico/" + currentWeather.getWeather_state_abbr() + ".ico").into(holder.weatherIcon);
 
 
@@ -51,22 +51,6 @@ public class RecyclerAdaptor extends RecyclerView.Adapter<RecyclerAdaptor.ViewHo
 
     public void setOnClickListener(View.OnClickListener onClickListener) {
         clickListener = onClickListener;
-    }
-
-    public String dayOfWeek(String date) {
-        String day = "";
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = null;
-        try {
-            date1 = dateFormat.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Calendar calendar = Calendar.getInstance();
-        day = new SimpleDateFormat("EEEE").format(date1);
-        day +=", "+ new SimpleDateFormat("d").format(date1);
-        return day;
     }
 
     @Override
